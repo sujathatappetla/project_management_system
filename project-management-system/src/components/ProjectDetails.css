@@ -1,0 +1,148 @@
+/* Ensure the page content starts from the top-left */
+.project-details-page {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns everything to the left */
+    justify-content: flex-start; /* Ensures content starts from the top */
+    position: absolute; /* Forces alignment to the very left */
+    left: 0; /* Moves content to the left edge */
+    top: 0;
+}
+
+/* Ensures the container is fully left-aligned */
+.project-details-container {
+    width: 100%;
+    max-width: 900px; /* You can adjust this */
+    text-align: left;
+    margin-left: 0; /* Forces alignment to the left */
+}
+
+/* Heading styling */
+.project-details-heading {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #1b61b1;
+    font-weight: bold;
+} 
+
+/* Paragraph styling */
+.project-details-para {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/* Button container with spacing */
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Button styling */
+.create-task-btn, .back-btn {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.back-btn {
+    background-color: #ccc;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 18px;
+} 
+.Tasks-heading{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #1b61b1;
+}
+.three-task-sections{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+} 
+
+.task-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-width:2px;
+    border-style: solid;
+    background-color:#1b61b1; 
+    margin:13px;
+    min-width: 350px;
+    min-height: 650px;
+    color:#ffffff;
+} 
+
+.task-section-heading{
+    text-align: center;
+    margin-top:3px;
+    font-size:25px;
+    color:#ffffff;
+    font-weight:bold;
+} 
+
+.task-item{
+    height:130px;
+    width:290px;
+    color:#1b61b1;
+    background-color: #ffffff;
+    border-width: 2px;
+    border-style: solid;
+    margin:10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} 
+.task-item-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.task-item-heading{
+    font-weight: bold;
+    font-size: 18px;
+    margin:13px;
+}
+
+.update-btn-task-item{
+    background-color:#1b61b1;
+    color: #ffffff;
+    padding:6px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-left: 10px;
+    width:90px;
+} 
+.task-item-assignto{
+    background-color: #1b61b1;
+    color: #ffffff;
+    height:50px;
+    width:50px;
+    border-radius: 25px;
+    margin:25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+.assignee-initial{
+    font-weight: bold;
+    font-size: 20px; 
+    cursor: pointer;
+    outline: none;
+}

@@ -1,0 +1,238 @@
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.home-container.fade-in {
+  opacity: 1;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15px;
+  position: relative;
+  animation: slideDown 1s ease forwards;
+}
+
+.navbar-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.project-management-logo {
+  height: 50px;
+  margin: 5px;
+}
+
+.navbar-heading {
+  font-size: 20px;
+  margin: 14px;
+  font-weight: bold;
+  color: #1b1b1b;
+}
+
+.login-logo {
+  margin-top: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.login-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Login Text Container */
+.login-container {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
+
+.login-container.animate-pop {
+  animation: pop 0.4s ease-out forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.login-text {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-text:hover {
+  color: #1b61b1;
+}
+
+.first-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.content-container {
+  width: 100%;
+  margin: 20px;
+  padding: 10px;
+  margin-top: 120px;
+}
+
+.main-heading {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 15px;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #1b61b1, #0056b3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.description-text {
+  font-size: 20px; 
+  margin: 15px;
+}
+
+.register-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #1b61b1;
+  color: white;
+  font-size: 18px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  font-weight: bold;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-button:hover {
+  transform: scale(1.08);
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 125%;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  margin-top: 110px; 
+  max-width: 750px;
+  height: auto;
+}
+
+/* Animations */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .first-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content-container, .image-container {
+    margin-top: 30px;
+  }
+
+  .register-button {
+    width: auto;
+    font-size: 16px;
+  }
+
+  .main-heading {
+    font-size: 36px;
+  }
+
+  .description-text {
+    font-size: 18px;
+  }
+
+  .hero-image {
+    max-width: 90%;
+    margin-top: 30px;
+  }
+}
