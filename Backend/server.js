@@ -13,7 +13,7 @@ const app = express();
 dotenv.config();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://project-management-system-1-r6jv.onrender.com" }));
 app.use(bodyParser.json());
 
 // MongoDB Connection
