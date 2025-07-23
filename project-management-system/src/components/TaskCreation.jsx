@@ -14,7 +14,7 @@ const TaskCreation = ({ projectId, onTaskCreated }) => {
     // Memoize fetch function to avoid re-creating it on every render
     const fetchTeamMembers = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/team-members/${projectId}`);
+            const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/team-members/${projectId}`);
             if (response.ok) {
                 const data = await response.json();
                 console.log("Fetched team members:", data.teamMembers); 
@@ -49,7 +49,7 @@ const TaskCreation = ({ projectId, onTaskCreated }) => {
         console.log("Sending Task Data:", taskData);
     
         try {
-            const response = await fetch("http://localhost:5000/api/tasks", {
+            const response = await fetch("https://project-management-system-m1ro.onrender.com/api/tasks", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
