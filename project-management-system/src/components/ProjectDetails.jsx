@@ -24,7 +24,7 @@ const ProjectDetails = () => {
       if (!project?._id) return; 
   
       try {
-        const response = await fetch(`http://localhost:5000/api/tasks/${project._id}`);
+        const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/tasks/${project._id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -52,7 +52,7 @@ const ProjectDetails = () => {
         return;
       }
   
-      const response = await fetch(`http://localhost:5000/api/tasks/update-status/${taskId}`, {
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/tasks/update-status/${taskId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: selectedStatus }),
