@@ -75,7 +75,7 @@ const TeamLeadDashboard=() => {
 
     useEffect(() => {
       if (showTeamModal) {
-          fetch("http://localhost:5000/api/users/students")
+          fetch("https://project-management-system-m1ro.onrender.com/api/users/students")
               .then((res) => res.json())
               .then((data) => setStudents(data))
               .catch((err) => console.error("Error fetching students:", err));
@@ -105,8 +105,8 @@ const TeamLeadDashboard=() => {
         try {
           let url =
             view === "myProjects"
-              ? `http://localhost:5000/api/projects/assigned-to/${loggedUser.username}`
-              : "http://localhost:5000/api/projects";
+              ? `https://project-management-system-m1ro.onrender.com/api/projects/assigned-to/${loggedUser.username}`
+              : "https://project-management-system-m1ro.onrender.com/api/projects";
   
           const response = await fetch(url);
           if (!response.ok) {
@@ -157,7 +157,7 @@ const TeamLeadDashboard=() => {
     useEffect(() => {
       const fetchStudents = async () => {
         try {
-          const response = await fetch("http://localhost:5000/api/users/students"); // Check if this API endpoint is correct!
+          const response = await fetch("https://project-management-system-m1ro.onrender.com/api/users/students"); // Check if this API endpoint is correct!
           const data = await response.json();
           console.log("Fectching students:", data); // Debugging step
           setStudents(data); // Store students in state
@@ -178,7 +178,7 @@ const TeamLeadDashboard=() => {
     
           const teamLeadId = loggedUser._id; // Define teamLeadId after the check
     
-          const response = await fetch(`http://localhost:5000/api/teams?teamLeadId=${teamLeadId}`);
+          const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/teams?teamLeadId=${teamLeadId}`);
           if (!response.ok) {
             throw new Error("Failed to fetch teams");
           }
@@ -217,7 +217,7 @@ const TeamLeadDashboard=() => {
 
   const fetchUsers = async () => {
       try {
-          const response = await fetch("http://localhost:5000/api/users");
+          const response = await fetch("https://project-management-system-m1ro.onrender.com/api/users");
           const data = await response.json();
           setAllUsers(data); // Set users who are not yet added to any team
       } catch (error) {
@@ -242,7 +242,7 @@ const TeamLeadDashboard=() => {
   
       try {
         const response = await fetch(
-          `http://localhost:5000/api/teams/${encodeURIComponent(teamId)}`
+          `https://project-management-system-m1ro.onrender.com/api/teams/${encodeURIComponent(teamId)}`
         );
         if (!response.ok) {
           throw new Error(`Failed to fetch team members, status: ${response.status}`);
@@ -262,7 +262,7 @@ const TeamLeadDashboard=() => {
   const fetchFacultyId = async () => {
     const teamLeadId=loggedUser._id;
     try {
-      const response = await fetch.get(`http://localhost:5000/api/faculty/${teamLeadId}`);
+      const response = await fetch.get(`https://project-management-system-m1ro.onrender.com/api/faculty/${teamLeadId}`);
       setFacultyId(response.data.faculty);
     } catch (error) {
       console.error("Error fetching faculty ID:", error);
@@ -288,7 +288,7 @@ const TeamLeadDashboard=() => {
 
     try {
         // Fetch user IDs from usernames
-        const studentResponse = await fetch("http://localhost:5000/api/get-user-ids", {
+        const studentResponse = await fetch("https://project-management-system-m1ro.onrender.com/api/get-user-ids", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ usernames: selectedMembers })
@@ -310,7 +310,7 @@ const TeamLeadDashboard=() => {
         console.log("Sending request with teamMemberIds:", userIds);
 
         // Create team request
-        const createTeamResponse = await fetch("http://localhost:5000/api/create-team", {
+        const createTeamResponse = await fetch("https://project-management-system-m1ro.onrender.com/api/create-team", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ 
@@ -358,7 +358,7 @@ const TeamLeadDashboard=() => {
   }
 
   try {
-      const response = await fetch(`http://localhost:5000/api/teams?teamLeadId=${teamLeadId}`);
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/teams?teamLeadId=${teamLeadId}`);
 
       if (!response.ok) {
           throw new Error("Failed to fetch updated teams.");
@@ -409,7 +409,7 @@ const TeamLeadDashboard=() => {
   const handleDelete = async (projectId) => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
     try {
-      const response = await fetch(`http://localhost:5000/api/projects/${projectId}`, {
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/projects/${projectId}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -444,7 +444,7 @@ const TeamLeadDashboard=() => {
         if (!selectedProject) return;
       
         try {
-          const response = await fetch(`http://localhost:5000/api/projects/${selectedProject._id}`, {
+          const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/projects/${selectedProject._id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -515,7 +515,7 @@ const TeamLeadDashboard=() => {
       handleOpenModal("addMembers")
       // Fetch team data
       const response = await fetch(
-        `http://localhost:5000/api/teams/${encodeURIComponent(teamId)}`
+        `https://project-management-system-m1ro.onrender.com/api/teams/${encodeURIComponent(teamId)}`
       );
       const teamData = await response.json();
       console.log("Fetched team data:", teamData);
@@ -524,7 +524,7 @@ const TeamLeadDashboard=() => {
         return;
       }
       // Fetch all students
-      const studentsResponse = await fetch("http://localhost:5000/api/users/students");
+      const studentsResponse = await fetch("https://project-management-system-m1ro.onrender.com/api/users/students");
       const students = await studentsResponse.json();
       console.log("Fetched students:", students);
       if (!Array.isArray(students)) {
@@ -549,7 +549,7 @@ const TeamLeadDashboard=() => {
     const confirmDelete=window.confirm("Are you sure you want to delete this team?");
     if (!confirmDelete) return  
     try {
-      const response=await fetch(`http://localhost:5000/api/teams/${teamId}`,{
+      const response=await fetch(`https://project-management-system-m1ro.onrender.com/api/teams/${teamId}`,{
         method:"DELETE"
       }) 
 
@@ -586,7 +586,7 @@ const assignProjectToTeam = async (projectId) => {
   }
 
   try {
-      const response = await fetch("http://localhost:5000/api/assignProject", {
+      const response = await fetch("https://project-management-system-m1ro.onrender.com/api/assignProject", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -624,7 +624,7 @@ const fetchProjects = async () => {
   console.log("Fetching unassigned projects for teamLeadName:", teamLead.username);
 
   try {
-      const response = await fetch(`http://localhost:5000/api/projects/unassigned/${encodeURIComponent(teamLead.username)}`);
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/projects/unassigned/${encodeURIComponent(teamLead.username)}`);
 
       console.log("Response Status:", response.status);
 
@@ -668,7 +668,7 @@ const handleAddMembersToTeam = async () => {
   try {
     console.log("Selected members:", selectedMembers);
     const response = await fetch(
-      `http://localhost:5000/api/teams/${encodeURIComponent(selectedTeamId)}/add-members`,
+      `https://project-management-system-m1ro.onrender.com/api/teams/${encodeURIComponent(selectedTeamId)}/add-members`,
       {
         method: "PUT",
         headers: {
@@ -698,7 +698,7 @@ const handleAddMembersToTeam = async () => {
    // Fetch team details and filter members not in the team
    const fetchTeamDetails = async (teamId) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/teams/${teamId}`);
+        const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/teams/${teamId}`);
         const data = await response.json();
         setTeamMembers(data.members); // Store team members
 
@@ -735,7 +735,7 @@ const handleAddMembersToTeam = async () => {
   //report and analysis
   const fetchProjectStats = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/project/stats");
+      const res = await fetch("https://project-management-system-m1ro.onrender.com/api/project/stats");
       const data = await res.json();
       setStats(data);
     } catch (error) {
@@ -745,7 +745,7 @@ const handleAddMembersToTeam = async () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/messages/get");
+      const res = await fetch("https://project-management-system-m1ro.onrender.com/api/messages/get");
       const data = await res.json();
       setMessages(data);
   
@@ -758,7 +758,7 @@ const handleAddMembersToTeam = async () => {
     if (!newMessage.trim()) return;
   
     try {
-      const res = await fetch("http://localhost:5000/api/messages/send", {
+      const res = await fetch("https://project-management-system-m1ro.onrender.com/api/messages/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
