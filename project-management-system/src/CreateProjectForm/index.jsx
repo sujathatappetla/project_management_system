@@ -22,8 +22,8 @@ const CreateProjectForm = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const studentResponse = await axios.get("http://localhost:5000/api/users/team-leads");
-        const facultyResponse = await axios.get("http://localhost:5000/api/users/faculty");
+        const studentResponse = await axios.get("https://project-management-system-m1ro.onrender.com/api/users/team-leads");
+        const facultyResponse = await axios.get("https://project-management-system-m1ro.onrender.com/api/users/faculty");
 
         setStudents(studentResponse.data);
         setFaculty(facultyResponse.data);
@@ -58,13 +58,13 @@ const CreateProjectForm = () => {
         createdAt: new Date().toISOString() 
       };
       console.log("ProjectPayload:", projectPayload);
-      const projectResponse = await axios.post("http://localhost:5000/api/projects", projectPayload);
+      const projectResponse = await axios.post("https://project-management-system-m1ro.onrender.com/api/projects", projectPayload);
   
       if (projectResponse.status === 200) {
         // Send email notification using the notify endpoint
         const emailPayload = { ...formData, ...authData };
         console.log("EmailPayload:", emailPayload);
-        await axios.post("http://localhost:5000/api/notify", emailPayload);
+        await axios.post("https://project-management-system-m1ro.onrender.com/api/notify", emailPayload);
   
         alert("Project assigned and email sent!");
         setShowModal(false);
