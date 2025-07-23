@@ -100,7 +100,7 @@ const StudentDashboard=() => {
       //fetching the projects assigned to students
       const fetchProjects = async (userId) => {
         try {
-          const response = await fetch(`http://localhost:5000/api/student/assigned-projects/${userId}`);
+          const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/student/assigned-projects/${userId}`);
           const data = await response.json();
 
           console.log("fetch the project of the student",data)
@@ -115,7 +115,7 @@ const StudentDashboard=() => {
       //fetching the tasks assigned to the students
       const fetchTasks = async (userId) => {
         try {
-          const response = await fetch(`http://localhost:5000/api/tasks/student/${userId}`);
+          const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/tasks/student/${userId}`);
           const data = await response.json();
           console.log("Tasks of the students: ",data)
           setTasks(data);
@@ -158,7 +158,7 @@ const handleStatusUpdate = async () => {
   if (!selectedProject) return;
 
   try {
-    const response = await fetch(`http://localhost:5000/api/projects/${selectedProject._id}`, {
+    const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/projects/${selectedProject._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -185,7 +185,7 @@ const handleStatusUpdate = async () => {
 //fetching the team members by team id
 const fetchTeamAndMembers = async (studentId) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/student/team/${studentId}`);
+    const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/student/team/${studentId}`);
     const data = await response.json();
 
     if (response.ok) {
@@ -229,7 +229,7 @@ const sendEmailToMember = (recipientEmail) => {
 
 const fetchMessages = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/messages/get");
+    const res = await fetch("https://project-management-system-m1ro.onrender.com/api/messages/get");
     const data = await res.json();
     setMessages(data);
 
@@ -242,7 +242,7 @@ const sendMessage = async () => {
   if (!newMessage.trim()) return;
 
   try {
-    const res = await fetch("http://localhost:5000/api/messages/send", {
+    const res = await fetch("https://project-management-system-m1ro.onrender.com/api/messages/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -274,7 +274,7 @@ const handleSubmit = async (e) => {
   try {
     setLoading(true);
 
-    const response = await fetch('http://localhost:5000/api/workupdates/submit', {
+    const response = await fetch('https://project-management-system-m1ro.onrender.com/api/workupdates/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
