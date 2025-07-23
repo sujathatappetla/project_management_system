@@ -17,7 +17,7 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (formData.role === "Team Lead") {
-      fetch("http://localhost:5000/api/auth/faculty")
+      fetch("https://project-management-system-m1ro.onrender.com/api/auth/faculty")
         .then((res) => res.json())
         .then((data) => setFaculties(data))
         .catch((err) => console.error("Error fetching faculty:", err));
@@ -45,7 +45,7 @@ const RegisterForm = () => {
     if (Object.values(newErrors).some((error) => error)) return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("https://project-management-system-m1ro.onrender.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
