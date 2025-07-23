@@ -72,12 +72,12 @@ const FacultyDashboard = () => {
   useEffect(() => {
     if (loggedUser) {
       if (view === "myProjects") {
-        fetch(`http://localhost:5000/api/projects/assigned-to/${loggedUser.username}`)
+        fetch(`https://project-management-system-m1ro.onrender.com/api/projects/assigned-to/${loggedUser.username}`)
           .then((res) => res.json())
           .then((data) => setProjects(data))
           .catch((err) => console.error("Error fetching my projects", err));
       } else if (view === "allProjects") {
-        fetch("http://localhost:5000/api/projects")
+        fetch("https://project-management-system-m1ro.onrender.com/api/projects")
           .then((res) => res.json())
           .then((data) => {
             console.log(data)
@@ -115,7 +115,7 @@ const FacultyDashboard = () => {
 //report and analysis
 const fetchProjectStats = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/project/stats");
+    const res = await fetch("https://project-management-system-m1ro.onrender.com/api/project/stats");
     const data = await res.json();
     setStats(data);
   } catch (error) {
@@ -139,7 +139,7 @@ const fetchProjectStats = async () => {
   const handleDelete = async (projectId) => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
     try {
-      const response = await fetch(`http://localhost:5000/api/projects/${projectId}`, {
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/projects/${projectId}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -172,7 +172,7 @@ const fetchProjectStats = async () => {
     if (!selectedProject) return;
   
     try {
-      const response = await fetch(`http://localhost:5000/api/projects/${selectedProject._id}`, {
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/projects/${selectedProject._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -225,12 +225,12 @@ const fetchProjectStats = async () => {
   const fetchProjects = () => {
     if (loggedUser) {
       if (view === "myProjects") {
-        fetch(`http://localhost:5000/api/projects/assigned-to/${loggedUser.username}`)
+        fetch(`https://project-management-system-m1ro.onrender.com/api/projects/assigned-to/${loggedUser.username}`)
           .then((res) => res.json())
           .then((data) => setProjects(data))
           .catch((err) => console.error("Error fetching my projects", err));
       } else if (view === "allProjects") {
-        fetch("http://localhost:5000/api/projects")
+        fetch("https://project-management-system-m1ro.onrender.com/api/projects")
           .then((res) => res.json())
           .then((data) => {
             console.log(data)
@@ -255,7 +255,7 @@ const fetchProjectStats = async () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/faculty/pending-requests/${facultyId}`);
+      const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/faculty/pending-requests/${facultyId}`);
       
       if (!response.ok) {
         const errorData = await response.json();
@@ -280,7 +280,7 @@ const fetchProjectStats = async () => {
 
   const respondToRequest = async (requestId, action) => {
     try {
-      const response = await fetch("http://localhost:5000/api/faculty/respond-request", {
+      const response = await fetch("https://project-management-system-m1ro.onrender.com/api/faculty/respond-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ requestId, action }),
@@ -299,7 +299,7 @@ const fetchProjectStats = async () => {
    //Approve team
    const approveTeam = async (teamId) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/faculty/approve-team/${teamId}`, {
+        const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/faculty/approve-team/${teamId}`, {
             method: "POST", 
             headers: {
               'Content-Type': 'application/json',
@@ -325,7 +325,7 @@ const fetchProjectStats = async () => {
 //Reject team
 const rejectTeam = async (requestId) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/faculty/reject-team/${requestId}`, {
+        const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/faculty/reject-team/${requestId}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
         });
@@ -358,7 +358,7 @@ const facultyId = loggedUser?._id;
       }
   
       try {
-          const response = await fetch(`http://localhost:5000/api/teams/faculty/${facultyId}`);
+          const response = await fetch(`https://project-management-system-m1ro.onrender.com/api/teams/faculty/${facultyId}`);
   
           if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -393,7 +393,7 @@ const facultyId = loggedUser?._id;
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/teams/${encodeURIComponent(teamId)}`
+      `https://project-management-system-m1ro.onrender.com/api/teams/${encodeURIComponent(teamId)}`
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch team members, status: ${response.status}`);
@@ -414,7 +414,7 @@ const handleAddMemberClick = async (teamId) => {
     handleOpenModal("addMembers")
     // Fetch team data
     const response = await fetch(
-      `http://localhost:5000/api/teams/${encodeURIComponent(teamId)}`
+      `https://project-management-system-m1ro.onrender.com/api/teams/${encodeURIComponent(teamId)}`
     );
     const teamData = await response.json();
     console.log("Fetched team data:", teamData);
@@ -423,7 +423,7 @@ const handleAddMemberClick = async (teamId) => {
       return;
     }
     // Fetch all students
-    const studentsResponse = await fetch("http://localhost:5000/api/users/students");
+    const studentsResponse = await fetch("https://project-management-system-m1ro.onrender.com/api/users/students");
     const students = await studentsResponse.json();
     console.log("Fetched students:", students);
     if (!Array.isArray(students)) {
@@ -477,7 +477,7 @@ const handleAddMembersToTeam = async () => {
   try {
     console.log("Selected members:", selectedMembers);
     const response = await fetch(
-      `http://localhost:5000/api/teams/${encodeURIComponent(selectedTeamId)}/add-members`,
+      `https://project-management-system-m1ro.onrender.com/api/teams/${encodeURIComponent(selectedTeamId)}/add-members`,
       {
         method: "PUT",
         headers: {
@@ -509,7 +509,7 @@ const handlePostChange = (e) => {
 //handing add a post 
 const handlePostSubmit = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/posts/create", {
+    const response = await fetch("https://project-management-system-m1ro.onrender.com/api/posts/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -560,7 +560,7 @@ const sendEmailToMember = (recipientEmail) => {
 
 const fetchMessages = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/messages/get");
+    const res = await fetch("https://project-management-system-m1ro.onrender.com/api/messages/get");
     const data = await res.json();
     setMessages(data);
 
@@ -573,7 +573,7 @@ const sendMessage = async () => {
   if (!newMessage.trim()) return;
 
   try {
-    const res = await fetch("http://localhost:5000/api/messages/send", {
+    const res = await fetch("https://project-management-system-m1ro.onrender.com/api/messages/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
